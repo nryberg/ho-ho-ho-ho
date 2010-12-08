@@ -1,0 +1,9 @@
+%h1= @city.song_title
+%h2= @city.artist
+%p= "Title Count: " + @title_count.to_s
+= @artists.each do |artist|
+  %p= artist
+%p
+  = link_to ('back'), cities_path
+
+%dl

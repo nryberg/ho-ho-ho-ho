@@ -1,0 +1,12 @@
+%h1 Twin Cities, MN
+
+%table
+  %thead
+    %tr
+      %th{:colspan => 3} Songs
+  
+  %tbody
+    - for city in @cities
+      %tr{ :class => cycle(:odd, :even) }
+        %td= Time.at(city.timestamp.to_i).strftime("%I:%M%p")
+        %td.action= link_to city.artist + " : " + city.song_title, city
