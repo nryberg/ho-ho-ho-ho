@@ -1,6 +1,11 @@
 class Song
   include MongoMapper::Document         
 
+  def artists
+    self.collection.distinct("artist")
+    
+  end
+    
 
 # Validations :::::::::::::::::::::::::::::::::::::::::::::::::::::
 # validates_presence_of :attribute

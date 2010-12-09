@@ -1,0 +1,12 @@
+%h1 Artists
+
+%table
+  %thead
+    %tr
+      %th{:colspan => 3}= 'actions'
+  
+  %tbody
+    - for artist in @artists
+      %tr{ :class => cycle(:odd, :even) }
+        %td= artist
+        %td.action= link_to 'show', :controller => "artists", :query => artist

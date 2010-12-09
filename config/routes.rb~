@@ -3,7 +3,6 @@ HoHoHoHo::Application.routes.draw do
 
   resources :cities
 
-  match "/artists?query" => redirect("/artists#show")
   resources :artists
   # The priority is based upon order of creation:
   # first created -> highest priority.

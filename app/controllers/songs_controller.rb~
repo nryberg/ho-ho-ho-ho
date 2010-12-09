@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.xml
   def index
-    @songs = Song.all
+    @songs = Song.limit(50).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,8 +13,15 @@ class SongsController < ApplicationController
   # GET /songs/1
   # GET /songs/1.xml
   def show
-    @song = Song.first(params[:id])
-
+    @song = Song.find(params[:id])
+    @titles = Song.where(:song_title => @song.song_title)
+    if @titles then
+      @title_count = @titles.count
+      @artists = @titles.collect {|artist| artist.artist}
+      @artists.uniq!
+      @artists.delete(@city.artist)
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @song }
