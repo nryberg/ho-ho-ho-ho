@@ -1,5 +1,5 @@
 %h1 Songs
-
+%h2= @query
 %table
   %thead
     %tr

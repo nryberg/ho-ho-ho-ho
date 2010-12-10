@@ -1,6 +1,10 @@
 HoHoHoHo::Application.routes.draw do
   resources :songs
 
+  controller :artists do
+    get 'find' => :find
+  end
+
   resources :cities
 
   match "/artists?query" => redirect("/artists#show")

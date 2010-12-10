@@ -1,4 +1,16 @@
 class ArtistsController < ApplicationController
+  
+  def find
+    p "in the artist find box"
+    @query = params[:query]
+    @songs = Song.collection.group(['song_title'], {'artist' => @query} , {'sum' => 0},
+              "function(doc, prev) { prev.sum += 1}")
+    
+    render :template => 'artists/find'
+    
+    
+  end
+  
   def index
     p "Indexed"
     if params[:query] then 

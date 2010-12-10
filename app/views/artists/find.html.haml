@@ -1,5 +1,4 @@
-%h1 Songs
-%h2= @query
+%h1= "Artist: " + @query 
 %table
   %thead
     %tr
@@ -8,5 +7,5 @@
   %tbody
     - for song in @songs
       %tr{ :class => cycle(:odd, :even) }
-        %td= song.song_title
+        %td= song["song_title"] + " (%d" % song["sum"] + ")"
         %td.action= link_to 'show', song

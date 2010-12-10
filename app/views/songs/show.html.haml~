@@ -1,6 +1,10 @@
 %h1= @song.song_title
 %h2= @song.artist
 %h3= @song.album
+
+- @artists.each do |artist|
+  %p= link_to artist["artist"] + " " + "%d" % artist["sum"], :controller => "artists", :action => "find"
+  
 %p
   = link_to 'back', songs_path
 
